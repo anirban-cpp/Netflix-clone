@@ -33,6 +33,36 @@
 .nav_avatar {
     position: fixed;
     right: 20px;
-    width: 30px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
+}
+
+.nav__left__contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav__right__contents {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav__contents__options {
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+.nav_option {
+    margin-right: 10px;
+}
+
+.nav_option:hover {
+    cursor: pointer;
+}
+
+.nav_option:last-child {
+    margin-right: 0px;
 }

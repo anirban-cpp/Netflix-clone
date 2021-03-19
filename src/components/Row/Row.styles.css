@@ -16,9 +16,9 @@
 }
 
 .row_poster {
-    max-height: 100px;
+    max-height: 200px;
     object-fit: contain;
-    margin-right: 10px;
+    margin-right: 12px;
     width: 100%;
     transition: transform 450ms;
 }
@@ -30,7 +30,7 @@
 }
 
 .row_posterLarge {
-    max-height: 250px;
+    max-height: 300px;
 }
 
 .row_posterLarge:hover {

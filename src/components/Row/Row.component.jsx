@@ -1,6 +1,9 @@
 import axios from '../../Axios/Axios';
 import React, { useEffect, useState } from 'react'
 
+import CustomTooltip from '../Tooltip/Tooltip.component';
+import Item from '../TooltipItem/TooltipItem.component';
+
 import './Row.styles.css';
 
 function Row({title, fetchUrl, isLargeRow=false}) {
@@ -27,12 +30,27 @@ function Row({title, fetchUrl, isLargeRow=false}) {
                     movies.map(movie => 
                         ((isLargeRow && movie.poster_path) ||
                         (!isLargeRow && movie.backdrop_path)) && (
-                        <img
-                            className={`row_poster ${isLargeRow && 'row_posterLarge'}`}
-                            key={movie.id}
-                            src={`${base_url}${
-                            isLargeRow ? movie.poster_path : movie.backdrop_path
-                        }`} alt={movie.name}/>
+                        <CustomTooltip 
+                            title={
+                                <>
+                                    <Item
+                                        title={movie?.title || movie?.name || movie?.original_name}
+                                        image={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+                                        description={movie.overview}
+                                        isLarge={isLargeRow}
+                                    />
+                                </>
+                            }
+                            interactive
+                        >
+                            <img
+                                className={`row_poster ${isLargeRow && 'row_posterLarge'}`}
+                                key={movie.id}
+                                src={`${base_url}${
+                                isLargeRow ? movie.poster_path : movie.backdrop_path
+                                }`} alt={movie.name}
+                            />
+                        </CustomTooltip>
                     )
                 )}
             </div>            

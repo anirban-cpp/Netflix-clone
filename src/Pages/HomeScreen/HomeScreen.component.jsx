@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar/NavBar.component';
 import Banner from '../../components/Banner/Banner.component';
 import requests from '../../Axios/Requests';
 import Row from '../../components/Row/Row.component';
+import Footer from '../../components/Footer/Footer.component';
 
 import './HomeScreen.styles.css';
 
@@ -31,6 +32,7 @@ const HomeScreen = () => {
             <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies}/>
             <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies}/>
             <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries}/>
+            <Footer/>
         </div>
     )
 }

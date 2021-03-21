@@ -5,10 +5,12 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 
 import './NavBar.styles.css'
 import { IconButton } from '@material-ui/core';
+import { useHistory } from 'react-router';
 
 function NavBar() {
 
     const [show, handleShow] = useState(false);
+    const history = useHistory();
 
     const transitionNavBar = () => {
         window.scrollY > 100 ? handleShow(true) : handleShow(false);
@@ -26,6 +28,7 @@ function NavBar() {
                     <div  className="nav__left__contents">
                         <div>
                             <img
+                                onClick={() => history.push('/')}
                                 className='nav_logo'
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png"
                                 alt=""
@@ -51,9 +54,10 @@ function NavBar() {
                         </div>
                         <div>
                             <img
-                            className='nav_avatar'
-                            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-                            alt=""
+                                onClick={() => history.push('/profile')}
+                                className='nav_avatar'
+                                src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+                                alt=""
                             />
                         </div>
                     </div>

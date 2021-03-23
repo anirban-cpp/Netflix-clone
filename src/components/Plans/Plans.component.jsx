@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
+import { Redirect } from 'react-router';
 import { selectUser } from '../../features/userSlice';
 
 import db from '../../firebase.utils/firebase';
@@ -14,8 +14,6 @@ const Plans = () => {
     const user = useSelector(selectUser);
     const [currentsubscription, setCurrentSubscription] = useState(null);
 
-    const history = useHistory();
-
     useEffect(() => {
         db.collection('Products').where('active','==',true)
         .get().then(querySnapshot => {
@@ -26,8 +24,9 @@ const Plans = () => {
             setProducts(products);
         });
         db.collection('Users').doc(user.uid).get().then(doc => {
-            if (doc.data().Subscription !== null)
+            if (doc.data().Subscription !== null) {
                 setCurrentSubscription(doc.data().Subscription.name);
+            }
         })
     },[user.uid]);
 
@@ -36,7 +35,7 @@ const Plans = () => {
             Subscription: productData,
         }).then(
             alert(`Subscribed to ${productData.name} plan`),
-            history.push('/')
+            <Redirect to='/'/>
         ).catch(error => alert(error.message))
     };
 
@@ -50,9 +49,17 @@ const Plans = () => {
                                 <h4>{productData.name}</h4>
                                 <h6>{productData.description}</h6>
                             </div>
-                            <button className={currentsubscription !== productData.name ? 'subscribe' : 'current'} onClick={() => Checkout(productData)}>
-                                {currentsubscription !== productData.name ? `Subscribe` : `Current Package`}
-                            </button>
+                            {
+                                currentsubscription ? (
+                                    <button className={currentsubscription !== productData.name ? 'subscribe' : 'current'} onClick={() => Checkout(productData)}>
+                                        {currentsubscription !== productData.name ? `Subscribe` : `Current Package`}
+                                    </button>
+                                ) : (
+                                    <button className='subscribe' onClick={() => Checkout(productData)}>
+                                        Subscribe
+                                    </button>
+                                )
+                            }
                         </div>
                     );
                 })

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import HomeScreen from './Pages/HomeScreen/HomeScreen.component';
 import Login from './Pages/LoginScreen/Login.component';
 
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router, useHistory } from 'react-router-dom';
 
 import './App.css';
 import { auth } from './firebase.utils/firebase';
@@ -15,6 +15,7 @@ function App() {
 
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     const unsubsribe = auth.onAuthStateChanged(userAuth => {
@@ -23,6 +24,7 @@ function App() {
           uid: userAuth.uid,
           email: userAuth.email,
         }));
+        history.push('/profile');
       } else {
         // Logged out
         dispatch(logout());
@@ -30,7 +32,7 @@ function App() {
     });
 
     return unsubsribe;
-  }, [dispatch]);
+  }, [dispatch, history]);
 
   return (
       <div className="app">

@@ -35,11 +35,11 @@ function NavBar() {
                             />
                         </div>
                         <div className="nav__contents__options" style={{paddingLeft: '120px'}}>
-                            <div className='nav_option' ><h5>Home</h5></div>
-                            <div className='nav_option' ><h5>Series</h5></div>
+                            <div className='nav_option' onClick={() => history.push('/')}><h5>Home</h5></div>
+                            <div className='nav_option' ><h5>About</h5></div>
                             <div className='nav_option' ><h5>Movies</h5></div>
-                            <div className='nav_option' ><h5>Popular News</h5></div>
-                            <div className='nav_option' ><h5>My List</h5></div>
+                            <div className='nav_option' ><h5>Series</h5></div>
+                            <div className='nav_option' ><h5>Featured</h5></div>
                         </div>
                     </div>
                     <div/>

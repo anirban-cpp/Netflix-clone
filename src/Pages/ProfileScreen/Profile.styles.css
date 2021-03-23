@@ -1,5 +1,5 @@
 .profileScreen {
-    height: 100vh;
+    height: fit-content;
     color: white;
 }
 
@@ -35,10 +35,12 @@
 }
 
 .profileScreen_details > h2 {
-    background-color: gray;
+    background-color: #111;
     padding: 10px;
     font-size: 15px;
     padding-left: 20px;
+    border: 2px solid #edeff0;
+    border-radius: 7px;
 }
 
 .profileScreen_signOut {
@@ -57,49 +59,4 @@
     border-bottom: 1px solid #282c2d;
     padding-bottom: 10px;
     padding-top: 10px;
-}
-
-.profileScreen_plan {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 5%;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.profileScreen_plan_name {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5%;
-    opacity: 0.8;
-}
-
-.profileScreen_plan_name > div {
-    display: flex;
-    flex-direction: column;
-    color: rgb(204, 203, 203);
-}
-
-.subscribe_button {
-    background-color: rgb(247, 47, 33);
-    color: white;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    width: 20%;
-    
-}
-
-.current_button {
-    background-color: gray;
-    color: #fff;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    width: 28%;
-}
-
-.profileScreen_plan_name:hover {
-    opacity: 1;
 }

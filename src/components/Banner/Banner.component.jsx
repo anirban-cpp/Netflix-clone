@@ -23,11 +23,11 @@ const Banner = () => {
         fetchData();
     },[]);
 
-    console.log(movie);
-
     const truncate = (string, n) => {
         return string?.length > n ? string.substr(0,n-1) + '...' : string;
     }
+
+    console.log(movie);
 
     return (
         <header 
@@ -44,11 +44,9 @@ const Banner = () => {
                     <button className="banner_button">Play</button>
                     <button className="banner_button">More Info</button>
                 </div>
-                <h1 className="banner_description">
-                    {
-                        truncate(movie ? movie.overview : `Movie description`,150)
-                    }
-                </h1>
+                <h3 className="banner_description">
+                    { truncate(movie ? movie.overview : `Movie description`,150) }
+                </h3>
             </div>
             <div className="banner--fadeBottom" />
         </header>

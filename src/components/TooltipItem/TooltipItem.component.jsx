@@ -6,8 +6,6 @@ import './TooltipItem.styles.css';
 
 const Item = ({title, image, description, isLarge}) => {
 
-    console.log(isLarge);
-
     return (
         <div className='item'>
             <div className="item_top">

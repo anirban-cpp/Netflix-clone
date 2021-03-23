@@ -26,7 +26,7 @@ const Plans = () => {
             setProducts(products);
         });
         db.collection('Users').doc(user.uid).get().then(doc => {
-            if (doc.data().Subscription)
+            if (doc.data().Subscription !== null)
                 setCurrentSubscription(doc.data().Subscription.name);
         })
     },[user.uid]);
